@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="blank">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>计费规则</title>
+		<link rel="stylesheet" href="../assets/css/default.css?ver=20180419">
+		<link rel="stylesheet" href="css/chargingRule.css">
+		<script type="text/javascript" src="../assets/js/lib/jquery-1.8.3.min.js"></script>
+		<script type="text/javascript" src="../assets/js/lib/transform.js"></script>
+		<script type="text/javascript" src="../assets/js/lib/alloy_touch.js"></script>
+		<script type="text/javascript" src="js/chargingRule.js"></script>
+	</head>
+	<body class="chargingRule">
+		<ul class="headTag clr">
+			<li class="f-l currChoice">
+				<img src="img/img_rule_fast_selected@3x.png" />
+				<p>快捷型</p>
+			</li>
+			<li class="f-l">
+				<img src="img/img_rule_comfortable_selected@3x.png" />
+				<p>舒适型</p>
+			</li>
+			<li class="f-l">
+				<img src="img/img_rule_commerce_selected@3x.png" />
+				<p>专车-商务型</p>
+			</li>
+		</ul>
+		<div class="introWrapper" id="fullpage">
+			<div id="scroller">
+				<div class="ruleInfo animated">
+					<ul>
+						<li class="clr">
+							<label class="f-l">起步费</label>
+							<label class="f-r">8元</label>
+						</li>
+						<li class="clr">
+							<label class="f-l">里程费</label>
+							<label class="f-r">12元/公里</label>
+						</li>
+						<li class="clr">
+							<label class="f-l">时长费（分时段）</label>
+						</li>
+						<li class="subTxtWrap">
+							<p class="subLeftTxt clr">
+								<label class="f-l">00:00-06:00</label>
+								<label class="f-r">5元/分钟</label>
+							</p>
+							<p class="subLeftTxt clr">
+								<label class="f-l">00:00-06:00</label>
+								<label class="f-r">5元/分钟</label>
+							</p>
+							<p class="subLeftTxt clr">
+								<label class="f-l">00:00-06:00</label>
+								<label class="f-r">5元/分钟</label>
+							</p>
+							<p class="subLeftTxt clr">
+								<label class="f-l">00:00-06:00</label>
+								<label class="f-r">5元/分钟</label>
+							</p>
+							<p class="subLeftTxt clr">
+								<label class="f-l">00:00-06:00</label>
+								<label class="f-r">5元/分钟</label>
+							</p>
+						</li>
+						<li class="clr">
+							<label class="f-l">远途服务费</label>
+							<label class="f-r">8.6元/公里</label>
+						</li>
+						<li class="subTxtWrap">
+							<p class="subLeftTxt clr">
+								<label class="f-l">(超出20公里，加收远途服务费)</label>
+							</p>
+						</li>
+						<li class="clr">
+							<label class="f-l">最低消费</label>
+							<label class="f-r">15元</label>
+						</li>
+					</ul>
+				</div>
+				<div class="tips animated">
+					<h5>注意：</h5>
+					<p>1. 里程费、时长费合计不足最低消费时，按最低消费收费</p>
+					<p>2. 高速费（含路桥费等），停车费按行驶过程中司机实际垫付的费用收取</p>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var scrollBody = $('#scroller').height();
+			var target = document.querySelector("#scroller");
+		    //给element注入transform属性
+		    Transform(target,true);
+		
+		    var at = new AlloyTouch({
+		        touch:"#fullpage",//反馈触摸的dom
+		        vertical: true,//不必需，默认是true代表监听竖直方向touch
+		        target: target, //运动的对象
+		        property: "translateY",  //被滚动的属性
+		        sensitivity: 1,//不必需,触摸区域的灵敏度，默认值为1，可以为负数
+		        factor: 1,//不必需,默认值是1代表touch区域的1px的对应target.y的1
+		        min: window.innerHeight - 45 - 48 - scrollBody, //不必需,滚动属性的最小值,down方向的偏移值
+		        max: 0, //不必需,滚动属性的最大值,up方向的偏移值
+		        step: 10,
+		        animationEnd: function (value) {
+//		            console.log(value);
+		        },
+		        pressMove: function (evt,value) {
+//		            console.log(evt.deltaX + "_" + evt.deltaY + "__" + value);
+		        }
+		    })
+		
+		    document.addEventListener("touchmove", function (evt) {
+		        evt.preventDefault();
+		    }, false);
+		</script>
+	</body>
+</html>
